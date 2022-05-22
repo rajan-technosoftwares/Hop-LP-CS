@@ -10,7 +10,7 @@ db=SQLAlchemy(app)
 
 
 
-class Con(db.Model):
+class Contacts(db.Model):
 
     id=db.Column(db.Integer,nullable=False ,primary_key=True)
     name=db.Column(db.String(50))
@@ -27,7 +27,7 @@ def contact():
     phone_num=request.form.get('phone_num')
     print(name,email,address,phone_num)
 
-    entry=Con(name=name,email=email,address=address,phone_num=phone_num)
+    entry=Contacts(name=name,email=email,address=address,phone_num=phone_num)
     db.session.add(entry)
     db.session.commit()
 
