@@ -1,1 +1,2 @@
-content: *.pyc
+*.pyc
+/api/templates
