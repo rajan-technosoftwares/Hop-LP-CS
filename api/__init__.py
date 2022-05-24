@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from os import path
 
 db=SQLAlchemy()
 
@@ -10,10 +9,7 @@ db_name= 'contacts.db'
 def create_app():
     app=Flask(__name__)
     
-    app.config['SECRET_KEY']='sdcoea,dnpsfipmae9ajfsdfsda.an23rds'
-    
-    app.config['SQLALCHEMY_DATABASE_URI']= f'sqlite:///{db_name}'
-    
+    app.config.from_object('config.Config')
     db.init_app(app)
 
     @app.before_first_request

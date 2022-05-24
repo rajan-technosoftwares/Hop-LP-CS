@@ -1,3 +1,4 @@
 *.pyc
 /api/templates
 contacts.db
+.env
