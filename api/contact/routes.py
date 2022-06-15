@@ -12,6 +12,7 @@ def contact():
     if request.method=='POST':
         
         data=request.form
+        data.headers.add('Access-Control-Allow-Origin','*')
         
 
         entry=Contact(name=data['name'],email=data['email'],pin_code=data['pin_code'],phone_num=data['phone_num'])
