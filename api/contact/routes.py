@@ -1,3 +1,4 @@
+import json
 from flask import Blueprint, Response
 from flask import request,render_template
 from api import db
@@ -12,8 +13,9 @@ def contact():
 
     if request.method=='POST':
         
-        data=request.form
-        resp = Response("contact form submitted")
+        d=request.get_data()
+        data=json.loads(d)
+        resp = Response("Contact Form Submitted")
         resp.headers['Access-Control-Allow-Origin'] = '*'
         entry=Contact(name=data['name'],email=data['email'],pin_code=data['pin_code'],phone_num=data['phone_num'])
         db.session.add(entry)
