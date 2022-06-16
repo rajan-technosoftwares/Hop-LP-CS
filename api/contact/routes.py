@@ -13,13 +13,12 @@ contact_api=Blueprint('contact_api',__name__,url_prefix='/')
 @cross_origin()
 def contact():
 
-    # if request.method=='POST':
+    
         
     d=request.get_data()
     data=json.loads(d)
     print(data)
-    # resp = Response("Contact Form Submitted")
-    # resp.headers['Access-Control-Allow-Origin'] = '*'
+    
     entry=Contact(name=data['name'],email=data['email'],pin_code=data['pin_code'],phone_num=data['phone_num'])
     db.session.add(entry)
     db.session.commit()
@@ -28,8 +27,28 @@ def contact():
             'Contact Details',
             recipients = ['bagoriarajan@gmail.com']
             )
-    msg.body = json.dumps(data)
-    print(mail.send(msg))
+    msg.html =f''' <!DOCTYPE html><html lang="en"><html><body>
+                    <h1> Contact Details </h1>
+                    <table border="1">
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Pin Code</th>
+                        </tr>
+                        <tr>
+                            <td>{ data['name'] }</td>
+                            <td>{ data['email'] }</td>
+                            <td>{ data['phone_num'] }</td>
+                            <td>{ data['pin_code'] }</td>
+
+                        </tr>
+                        
+                    </table>
+                    </body>
+                    </html>'''
+    print(msg)
+    mail.send(msg)
         
         
 
