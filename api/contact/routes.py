@@ -17,7 +17,7 @@ def contact():
         
     d=request.get_data()
     data=json.loads(d)
-    print(data)
+    
     
     entry=Contact(name=data['name'],email=data['email'],pin_code=data['pin_code'],phone_num=data['phone_num'])
     db.session.add(entry)
@@ -27,27 +27,36 @@ def contact():
             'Contact Details',
             recipients = ['bagoriarajan@gmail.com']
             )
-    msg.html =f''' <!DOCTYPE html><html lang="en"><html><body>
-                    <h1> Contact Details </h1>
-                    <table border="1">
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone Number</th>
-                            <th>Pin Code</th>
-                        </tr>
-                        <tr>
-                            <td>{ data['name'] }</td>
-                            <td>{ data['email'] }</td>
-                            <td>{ data['phone_num'] }</td>
-                            <td>{ data['pin_code'] }</td>
+    msg.html =f''' <!DOCTYPE html>
+                <html lang="en">
+                    <html>
+                        <body>
+                            <h1 style="margin-top: 0; font-size: 22px;">Contact Details</h1>
 
-                        </tr>
-                        
-                    </table>
-                    </body>
-                    </html>'''
-    print(msg)
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row" style="background: #e9e9e9; padding: 8px 10px; text-align: left;">Name</th>
+                                        <td style="background: #f5f3f3; padding: 8px 10px; text-align: left;">{ data['name'] }</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="background: #e9e9e9; padding: 8px 10px; text-align: left;">Email</th>
+                                        <td style="background: #f5f3f3; padding: 8px 10px; text-align: left;">J{ data['email'] }</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="background: #e9e9e9; padding: 8px 10px; text-align: left;">Phone Number</th>
+                                        <td style="background: #f5f3f3; padding: 8px 10px; text-align: left;">{ data['phone_num'] }</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row" style="background: #e9e9e9; padding: 8px 10px; text-align: left;">Pin Code</th>
+                                        <td style="background: #f5f3f3; padding: 8px 10px; text-align: left;">{ data['pin_code'] }</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </body>
+                    </html>
+                </html>'''
+    
     mail.send(msg)
         
         
