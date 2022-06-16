@@ -41,7 +41,7 @@ def contact():
                                     </tr>
                                     <tr>
                                         <th scope="row" style="background: #e9e9e9; padding: 8px 10px; text-align: left;">Email</th>
-                                        <td style="background: #f5f3f3; padding: 8px 10px; text-align: left;">J{ data['email'] }</td>
+                                        <td style="background: #f5f3f3; padding: 8px 10px; text-align: left;">{ data['email'] }</td>
                                     </tr>
                                     <tr>
                                         <th scope="row" style="background: #e9e9e9; padding: 8px 10px; text-align: left;">Phone Number</th>
