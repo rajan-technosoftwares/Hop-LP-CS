@@ -13,12 +13,12 @@ def create_app():
     cors = CORS(app)
     global mail
     mail=Mail(app)
-    app.config['MAIL_SERVER']='smtp.gmail.com'
+    app.config['MAIL_SERVER']='mail.technosoftwares.com'
     app.config['MAIL_PORT'] = 465
 
-    app.config['MAIL_USERNAME'] = 'rajan.b.technosoftwares@gmail.com'
-    app.config['MAIL_PASSWORD'] = 'rajan#123'
-    app.config['MAIL_DEFAULT_SENDER'] = 'rajan.b.technosoftwares@gmail.com'
+    app.config['MAIL_USERNAME'] = 'cara.chan@technosoftwares.com'
+    app.config['MAIL_PASSWORD'] = 'Cara#123'
+    app.config['MAIL_DEFAULT_SENDER'] = 'cara.chan@technosoftwares.com'
 
     app.config['MAIL_USE_TLS'] = False
     app.config['MAIL_USE_SSL'] = True
