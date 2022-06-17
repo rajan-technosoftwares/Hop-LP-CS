@@ -25,7 +25,7 @@ def contact():
                     
     msg = Message(
             'Contact Details',
-            recipients = ['bagoriarajan@gmail.com']
+            recipients = ['hello@hopelectric.in']
             )
     msg.html =f''' <!DOCTYPE html>
                 <html lang="en">
